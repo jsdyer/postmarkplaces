@@ -1,0 +1,181 @@
+{
+  "coverage": "Langley and Dartmouth · office records before 1872–1968",
+  "offices": [
+    {
+      "id": "aldergrove",
+      "names": [
+        {
+          "name": "Aldergrove",
+          "from": "1885-10-01"
+        }
+      ],
+      "closed": null,
+      "region": "Langley, BC",
+      "source": "https://www.tol.ca/en/the-township/resources/about-the-township/history-heritage/TOL-Our-Shared-History-Background-Document-Final.pdf#page=65"
+    },
+    {
+      "id": "brookswood",
+      "names": [
+        {
+          "name": "Brookswood",
+          "from": "1925-02-16"
+        }
+      ],
+      "closed": "1926-10-15",
+      "region": "Langley, BC",
+      "source": "https://www.tol.ca/en/the-township/resources/about-the-township/history-heritage/TOL-Our-Shared-History-Background-Document-Final.pdf#page=65"
+    },
+    {
+      "id": "fern-ridge",
+      "names": [
+        {
+          "name": "Fern Ridge",
+          "from": "1908-07-01"
+        }
+      ],
+      "closed": "1926-10-15",
+      "region": "Langley, BC",
+      "source": "https://www.tol.ca/en/the-township/resources/about-the-township/history-heritage/TOL-Our-Shared-History-Background-Document-Final.pdf#page=65"
+    },
+    {
+      "id": "glen-valley",
+      "names": [
+        {
+          "name": "Glen Valley",
+          "from": "1904-11-01"
+        }
+      ],
+      "closed": "1968-04-30",
+      "region": "Langley, BC",
+      "source": "https://www.tol.ca/en/the-township/resources/about-the-township/history-heritage/TOL-Our-Shared-History-Background-Document-Final.pdf#page=65"
+    },
+    {
+      "id": "station-fort",
+      "names": [
+        {
+          "name": "Langley",
+          "from": null
+        },
+        {
+          "name": "Fort Langley",
+          "from": "1912-07-01"
+        }
+      ],
+      "closed": null,
+      "region": "Langley, BC",
+      "source": "https://www.tol.ca/en/the-township/resources/about-the-township/history-heritage/TOL-Our-Shared-History-Background-Document-Final.pdf#page=65",
+      "before": "1872-01-01"
+    },
+    {
+      "id": "station-prairie",
+      "names": [
+        {
+          "name": "Langley Prairie",
+          "from": "1911-05-16"
+        },
+        {
+          "name": "Langley",
+          "from": "1955-06-01"
+        }
+      ],
+      "closed": null,
+      "region": "Langley, BC",
+      "source": "https://www.tol.ca/en/the-township/resources/about-the-township/history-heritage/TOL-Our-Shared-History-Background-Document-Final.pdf#page=65"
+    },
+    {
+      "id": "milner",
+      "names": [
+        {
+          "name": "Milner",
+          "from": "1908-04-01"
+        }
+      ],
+      "closed": null,
+      "region": "Langley, BC",
+      "source": "https://www.tol.ca/en/the-township/resources/about-the-township/history-heritage/TOL-Our-Shared-History-Background-Document-Final.pdf#page=65"
+    },
+    {
+      "id": "station-innes",
+      "names": [
+        {
+          "name": "Langley Prairie",
+          "from": "1883-11-01"
+        },
+        {
+          "name": "Murrayville",
+          "from": "1911-05-16"
+        }
+      ],
+      "closed": null,
+      "region": "Langley, BC",
+      "source": "https://www.tol.ca/en/the-township/resources/about-the-township/history-heritage/TOL-Our-Shared-History-Background-Document-Final.pdf#page=65"
+    },
+    {
+      "id": "otter",
+      "names": [
+        {
+          "name": "Otter",
+          "from": "1893-05-01"
+        }
+      ],
+      "closed": "1917-10-31",
+      "region": "Langley, BC",
+      "source": "https://www.tol.ca/en/the-township/resources/about-the-township/history-heritage/TOL-Our-Shared-History-Background-Document-Final.pdf#page=65"
+    },
+    {
+      "id": "willoughby",
+      "names": [
+        {
+          "name": "Willoughby",
+          "from": "1921-05-01"
+        }
+      ],
+      "closed": "1927-12-15",
+      "region": "Langley, BC",
+      "source": "https://www.tol.ca/en/the-township/resources/about-the-township/history-heritage/TOL-Our-Shared-History-Background-Document-Final.pdf#page=65"
+    },
+    {
+      "id": "walnut-grove",
+      "names": [
+        {
+          "name": "Walnut Grove",
+          "from": "1913-04-01"
+        }
+      ],
+      "closed": null,
+      "region": "Langley, BC",
+      "source": "https://www.tol.ca/en/the-township/resources/about-the-township/history-heritage/TOL-Our-Shared-History-Background-Document-Final.pdf#page=65"
+    },
+    {
+      "id": "dartmouth",
+      "region": "Dartmouth, NS",
+      "names": [
+        {
+          "name": "Dartmouth",
+          "from": "1870"
+        }
+      ],
+      "closed": null,
+      "source": "https://www.halifax.ca/sites/default/files/documents/business/planning-development/applications/24619-h-2020.07.24-heritageregistrationstaffreport.pdf#page=23",
+      "events": [
+        [
+          "1870",
+          "Dartmouth received official post-office status. Luther Sterns was the first postmaster."
+        ],
+        [
+          "1876",
+          "John E. Leadley succeeded Sterns and moved the office to his shop at King and Portland."
+        ],
+        [
+          "1891",
+          "Leadley moved his shop to Water and Ochterloney."
+        ],
+        [
+          "1894",
+          "A brick post office was built opposite Stern’s Corner."
+        ]
+      ]
+    }
+  ],
+  "count": 12
+}

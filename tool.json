@@ -1,16 +1,39 @@
 {
-  "id": "coolcode-tool-template",
-  "title": "CoolCode Tool Starter",
-  "description": "A browser-only example that trims lines and removes exact duplicates.",
-  "category": "security",
-  "tags": ["text", "lines", "duplicates"],
-  "icon": "scan-search",
-  "url": "/coolcode-tool-template/",
-  "source": "https://github.com/jsdyer/coolcode-tool-template",
+  "id": "postmarkplaces",
+  "title": "Postmark Places",
+  "description": "Read a historic postmark by matching its name and date to documented post-office openings, renamings and closures.",
+  "category": "places",
+  "tags": [
+    "Langley",
+    "post offices",
+    "postal history",
+    "place names",
+    "Dartmouth",
+    "Halifax"
+  ],
+  "icon": "map",
+  "url": "/postmarkplaces/",
+  "source": "https://github.com/jsdyer/postmarkplaces",
   "hosting": "project",
   "access": "browser",
   "data_info": {
-    "mode": "local",
-    "detail": "The browser reads the text you paste and compares its lines."
+    "mode": "snapshot",
+    "detail": "Langley and Dartmouth heritage reports document office names, openings, closures and moves.",
+    "cadence": "Monthly",
+    "probes": [
+      {
+        "label": "Data retrieved",
+        "url": "https://coolcode.ca/postmarkplaces/data/edition.json",
+        "path": [
+          "retrieved"
+        ],
+        "count_at": {
+          "path": [
+            "count"
+          ],
+          "unit": "post offices"
+        }
+      }
+    ]
   }
 }

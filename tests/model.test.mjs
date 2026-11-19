@@ -1,21 +1,19 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { cleanLines } from '../web/model.mjs';
-test('trims, removes blanks and preserves first-seen order', () => {
-  assert.deepEqual(cleanLines('  Halifax\nLangley\nHalifax\n\nVancouver  '), {
-    text: 'Halifax\nLangley\nVancouver', count: 3, removed: 1,
-  });
+import {readFileSync} from 'node:fs';
+import {historyLines,matches} from '../web/model.mjs';
+const {offices}=JSON.parse(readFileSync(new URL('../web/data/edition.json',import.meta.url)));
+const lookup=(name,date)=>matches(offices,name,date,'All areas');
+test('Langley Prairie transfers from one office to another on the rename day',()=>{
+  const old=lookup('Langley Prairie','1911-05-15')[0].office;
+  const next=lookup('Langley Prairie','1911-05-16');
+  assert.equal(old.names.at(-1).name,'Murrayville'); assert.equal(next.length,1);
+  assert.notEqual(next[0].office.id,old.id);
 });
-test('supports Windows and old Mac line endings', () => {
-  assert.equal(cleanLines('a\r\nb\ra').text, 'a\nb');
+test('Closures and uncertain openings keep their boundaries',()=>{
+  assert.equal(lookup('Otter','1917-10-31').length,0);
+  assert.equal(lookup('Langley','1871-05-01')[0].state.uncertain,true);
+  assert.equal(lookup('Dartmouth','1870-06-01')[0].state.uncertain,true);
+  assert.equal(lookup('Dartmouth','1869-12-31').length,0);
+  assert.equal(historyLines(lookup('Dartmouth','1894-06-01')[0].office).length,4);
 });
-test('empty text and whitespace produce an empty result', () => {
-  assert.deepEqual(cleanLines(' \n\t'), { text: '', count: 0, removed: 0 });
-});
-test('preserves case and Unicode', () => {
-  assert.equal(cleanLines('Québec\nquébec\n東京\nQuébec').text, 'Québec\nquébec\n東京');
-});
-test('treats markup as ordinary text', () => {
-  assert.equal(cleanLines('<script>alert(1)</script>\n<script>alert(1)</script>').text, '<script>alert(1)</script>');
-});
-test('rejects non-text input', () => { assert.throws(() => cleanLines(null), TypeError); });
