@@ -20,3 +20,11 @@ Compare the “Langley Prairie” postmark in 1910 and 1912. The earlier office 
 `sources/records.json` contains the reviewed histories. The monthly workflow checks the two complete source reports against their recorded fingerprints. Changed documents require reviewing the transcriptions before updating the edition. The displayed retrieval date describes the source check.
 
 Searches and dates stay in the browser. Run `python3 scripts/refresh.py` to retrieve and verify, `node --test tests/*.test.mjs` and `python3 -m unittest discover -s tests` to check the application, and `python3 scripts/build.py` for an offline build. Serve `dist/`. With Playwright Chromium installed, run `python3 tests/browser_smoke.py` to exercise it.
+
+<!-- schedule-reliability -->
+## Schedule reliability
+
+Public GitHub repositories can have scheduled workflows disabled after 60 days of inactivity. A separate weekly [schedule guard](.github/workflows/schedule-guard.yml) calls GitHub's enable-workflow API for an explicit list of refresh workflows and itself. It can restore workflows disabled for inactivity, preserves manually disabled workflows, and runs independently of collection failures.
+
+This is an interim mitigation, not a scheduling guarantee: GitHub does not document active-workflow renewal as a permanent exemption, and scheduled runs can be delayed or dropped. A scheduler on our own Linux server is the planned independent trigger. The guard does not collect data, create dummy commits, or change source/check timestamps; successful collection and published data freshness still need monitoring.
+<!-- /schedule-reliability -->
