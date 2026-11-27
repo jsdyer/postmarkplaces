@@ -115,7 +115,7 @@ def write_records(stage):
         if o["id"] == "aldergrove":
             related.append(a("See enrolment at Aldergrove’s school in Schoolhouse Ledger","https://coolcode.ca/schoolhouseledger/schools/aldergrove/"))
         if o["id"] == "dartmouth":
-            related.append(a("Compare historical aerial views in Halifax Time Lens","https://coolcode.ca/halifaxtimelens/"))
+            related.append(a("See later aerial views near Dartmouth’s ferry landing in Halifax Time Lens","https://coolcode.ca/halifaxtimelens/records/dartmouth-ferry-landing/"))
         return html + item_list(related) + "</section>"
 
     for o in offices:
