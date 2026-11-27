@@ -42,6 +42,25 @@ def main():
                 page.set_viewport_size({"width": 390, "height": 844})
                 assert page.evaluate("document.documentElement.scrollWidth <= window.innerWidth")
                 page.screenshot(path=str(screenshots / "mobile.png"), full_page=True)
+                base = f"http://127.0.0.1:{server.server_port}/example-tool/"
+                page.goto(base + "records/names/langley-prairie/")
+                page.get_by_role("link", name="Match an envelope dated 1911-05-15").click()
+                page.wait_for_selector("#cards article")
+                assert "Murrayville" in page.locator("#cards").inner_text()
+                page.locator("#cards a", has_text="related records").click()
+                assert page.url.endswith("/records/offices/station-innes/")
+                page.get_by_role("link", name="Open this office in the postmark finder").click()
+                page.wait_for_selector("#selected-office:visible")
+                assert page.locator("#cards article").count() == 1
+                static = browser.new_context(java_script_enabled=False, viewport={"width":390,"height":844})
+                view = static.new_page()
+                view.goto(base)
+                view.get_by_role("link", name="browse postal histories").click()
+                view.get_by_role("link", name="Willoughby", exact=True).click()
+                assert "1927-12-15" in view.locator("main").inner_text()
+                assert view.get_by_text("Previous recorded opening", exact=False).count() == 1
+                assert view.evaluate("document.documentElement.scrollWidth <= window.innerWidth")
+                static.close()
                 assert not errors, errors
                 browser.close()
             print("Browser checks passed: project subpath, filters, records and mobile layout")

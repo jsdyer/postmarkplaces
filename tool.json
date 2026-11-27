@@ -35,5 +35,9 @@
         }
       }
     ]
+  },
+  "result_directory": {
+    "path": "records/",
+    "title": "Postal histories by office, place and postmark name"
   }
 }

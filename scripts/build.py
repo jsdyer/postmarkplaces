@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Build a browser tool using Python's standard library; no network required."""
+from records import write_records
 from html import escape
 import json
 from pathlib import Path
@@ -15,7 +16,7 @@ SLUG = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*")
 def metadata(root=ROOT):
     tool = json.loads((root / "tool.json").read_text(encoding="utf-8"))
     required = {"id", "title", "description", "category", "tags", "icon", "url", "source", "hosting", "access", "data_info"}
-    if not isinstance(tool, dict) or set(tool) != required:
+    if not isinstance(tool, dict) or set(tool) != required | {"result_directory"}:
         raise ValueError("tool.json has missing or unknown fields")
     for key in required - {"tags", "data_info"}:
         if not isinstance(tool[key], str) or not tool[key].strip():
@@ -30,6 +31,8 @@ def metadata(root=ROOT):
     if (not isinstance(info, dict) or info.get("mode") not in ("snapshot", "live", "local", "reference", "mixed")
             or not isinstance(info.get("detail"), str) or not info["detail"].strip()):
         raise ValueError("Describe the tool's inputs for its homepage card in data_info")
+    if tool["result_directory"].get("path") != "records/" or not tool["result_directory"].get("title"):
+        raise ValueError("Expected the postal record directory")
     guide = (root / "README.md").read_text(encoding="utf-8")
     begin, end = "<!-- coolcode:guide -->", "<!-- /coolcode:guide -->"
     if guide.count(begin) != 1 or guide.count(end) != 1 or not guide.partition(begin)[2].partition(end)[0].strip() or guide.index(begin) > guide.index(end):
@@ -61,6 +64,7 @@ def build(root=ROOT):
         if re.search(r"\{\{[A-Z_]+\}\}", page):
             raise ValueError("Unresolved template placeholder in web/index.html")
         index.write_text(page, encoding="utf-8")
+        write_records(stage)
         (stage / ".nojekyll").touch()
         if output.exists():
             shutil.rmtree(output)

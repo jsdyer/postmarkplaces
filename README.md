@@ -5,8 +5,10 @@
 Look up the name and date on an envelope. Trace documented office names, see when a name changed hands, or browse all histories from the Township of Langley and Dartmouth.
 
 <!-- coolcode:guide -->
-Compare the “Langley Prairie” postmark in 1910 and 1912. The earlier office became Murrayville on May 16, 1911, the day a different office took the Langley Prairie name. Browse Dartmouth’s history to see how its post office moved between a general store and a purpose-built building. Approximate openings and undocumented closures are labelled on the cards.
+Compare the “Langley Prairie” postmark in 1910 and 1912. The earlier office became Murrayville on May 16, 1911, the day a different office took the Langley Prairie name. Browse Dartmouth’s history to see how its post office moved between a general store and a purpose-built building. Follow the name timeline to both office histories, or browse dated events by area. Approximate openings and undocumented closures are labelled on the cards.
 <!-- /coolcode:guide -->
+
+[Trace both Langley Prairie post offices](https://coolcode.ca/postmarkplaces/records/names/langley-prairie/).
 
 ## Sources and dating
 
