@@ -39,5 +39,10 @@
   "result_directory": {
     "path": "records/",
     "title": "Postal histories by office, place and postmark name"
+  },
+  "dataset": {
+    "title": "Historic post-office names, dates and places",
+    "file": "data/edition.json",
+    "format": "JSON"
   }
 }

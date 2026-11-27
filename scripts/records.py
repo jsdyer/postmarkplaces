@@ -76,7 +76,7 @@ def write_records(stage):
 <link rel="stylesheet" href="{rel}style.css"><script defer src="/assets/tool-metrics.js" referrerpolicy="no-referrer"></script></head><body data-tool-id="postmarkplaces">
 <a href="#main" class="skip">Skip to record</a><header>{a("CoolCode","https://coolcode.ca/")}{a("Postmark finder",rel)}</header>
 <main id="main" class="postal-record"><div class="mast"><p class="kicker">{a("Postal histories",rel+"records/")}</p><h1>{escape(title)}</h1><p class="intro">{escape(summary)}</p></div>{body(rel)}</main>
-<footer>Source documents checked {escape(edition["retrieved"][:10])} · {a("Search Library and Archives Canada",LAC)} · {a("Report a correction","https://coolcode.ca/report/?tool=postmarkplaces")}</footer></body></html>'''
+<footer>Source documents checked {escape(edition["retrieved"][:10])} · {a("Download the postal history data (JSON)",rel+"data/edition.json")} · {a("Search Library and Archives Canada",LAC)} · {a("Report a correction","https://coolcode.ca/report/?tool=postmarkplaces")}</footer></body></html>'''
         (files / "index.html").write_text(content, encoding="utf-8")
 
     def office_link(office, rel):

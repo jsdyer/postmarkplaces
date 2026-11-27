@@ -4,6 +4,7 @@ import shutil
 import sys
 import tempfile
 import unittest
+from xml.etree import ElementTree
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 from build import ROOT, build, metadata
 
@@ -33,6 +34,24 @@ class BuildTests(unittest.TestCase):
         self.assertIn('href="./style.css"', page)
         self.assertFalse((self.root / "dist/private.txt").exists())
         self.assertTrue((self.root / "dist/.nojekyll").exists())
+
+    def test_sitemap_covers_offices_and_preserves_the_two_name_histories(self):
+        build(self.root)
+        site = self.root / "dist"
+        office_ids = {o["id"] for o in json.loads((site / "data/edition.json").read_text())["offices"]}
+        ns = "{http://www.sitemaps.org/schemas/sitemap/0.9}"
+        pages = [e.text for e in ElementTree.parse(site / "sitemap.xml").iter(ns + "loc")]
+        base = "https://coolcode.ca/postmarkplaces/"
+        self.assertEqual(office_ids, {u.split("/")[-2] for u in pages if "/offices/" in u})
+        self.assertEqual(len(set(pages)), len(pages))
+        for url in pages:
+            page = (site / url.removeprefix(base) / "index.html").read_text()
+            self.assertIn(f'<link rel="canonical" href="{url}">', page)
+        timeline = (site / "records/names/langley-prairie/index.html").read_text()
+        self.assertIn("records/offices/station-innes/", timeline)
+        self.assertIn("records/offices/station-prairie/", timeline)
+        self.assertIn("date=1911-05-15", timeline)
+        self.assertIn("date=1911-05-16", timeline)
 
     def test_url_matches_tool_id(self):
         self.edit(url="/different/")

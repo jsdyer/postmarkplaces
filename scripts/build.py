@@ -16,7 +16,7 @@ SLUG = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*")
 def metadata(root=ROOT):
     tool = json.loads((root / "tool.json").read_text(encoding="utf-8"))
     required = {"id", "title", "description", "category", "tags", "icon", "url", "source", "hosting", "access", "data_info"}
-    if not isinstance(tool, dict) or set(tool) != required | {"result_directory"}:
+    if not isinstance(tool, dict) or set(tool) != required | {"result_directory", "dataset"}:
         raise ValueError("tool.json has missing or unknown fields")
     for key in required - {"tags", "data_info"}:
         if not isinstance(tool[key], str) or not tool[key].strip():
@@ -33,6 +33,8 @@ def metadata(root=ROOT):
         raise ValueError("Describe the tool's inputs for its homepage card in data_info")
     if tool["result_directory"].get("path") != "records/" or not tool["result_directory"].get("title"):
         raise ValueError("Expected the postal record directory")
+    if tool["dataset"].get("file") != "data/edition.json" or tool["dataset"].get("format") != "JSON":
+        raise ValueError("Expected the published office histories in JSON format")
     guide = (root / "README.md").read_text(encoding="utf-8")
     begin, end = "<!-- coolcode:guide -->", "<!-- /coolcode:guide -->"
     if guide.count(begin) != 1 or guide.count(end) != 1 or not guide.partition(begin)[2].partition(end)[0].strip() or guide.index(begin) > guide.index(end):
